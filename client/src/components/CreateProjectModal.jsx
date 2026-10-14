@@ -7,7 +7,6 @@ export const CreateProjectModal = () => {
   const [name, setName] = useState('');
   const [key, setKey] = useState('');
   const [description, setDescription] = useState('');
-  const [color, setColor] = useState('#8b5cf6');
 
   if (!isCreateProjectOpen) return null;
 
@@ -19,7 +18,6 @@ export const CreateProjectModal = () => {
       name: name.trim(),
       key: key.trim().toUpperCase() || name.substring(0, 3).toUpperCase(),
       description: description.trim(),
-      color,
     });
 
     setName('');
@@ -29,15 +27,18 @@ export const CreateProjectModal = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs"
+      onClick={() => setIsCreateProjectOpen(false)}
+    >
       <div
-        className="w-full max-w-md bg-white dark:bg-[#111827] rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 animate-scale-in"
+        className="w-full max-w-md bg-white dark:bg-[#111827] rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-4">
-          <h3 className="text-base font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-            <FolderPlus className="w-5 h-5 text-brand-500" />
-            Create Project Workspace
+          <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+            <FolderPlus className="w-4 h-4 text-brand-500" />
+            Create Workspace
           </h3>
           <button
             onClick={() => setIsCreateProjectOpen(false)}
@@ -47,10 +48,10 @@ export const CreateProjectModal = () => {
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3.5">
           <div>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
-              Project Name *
+            <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 uppercase mb-1">
+              Workspace Name *
             </label>
             <input
               type="text"
@@ -60,56 +61,35 @@ export const CreateProjectModal = () => {
                 setName(e.target.value);
                 if (!key) setKey(e.target.value.substring(0, 3).toUpperCase());
               }}
-              placeholder="e.g. Mobile E-commerce Sprint"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              placeholder="e.g. Data Ingestion Pipeline"
+              className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-brand-500"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                Project Key
-              </label>
-              <input
-                type="text"
-                maxLength={4}
-                value={key}
-                onChange={(e) => setKey(e.target.value.toUpperCase())}
-                placeholder="e.g. MOB"
-                className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-mono font-bold text-slate-800 dark:text-slate-200 uppercase"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
-                Accent Color
-              </label>
-              <div className="flex items-center gap-2 pt-1">
-                {['#8b5cf6', '#ec4899', '#3b82f6', '#10b981', '#f59e0b'].map((c) => (
-                  <button
-                    key={c}
-                    type="button"
-                    onClick={() => setColor(c)}
-                    className={`w-6 h-6 rounded-full transition-transform ${
-                      color === c ? 'scale-125 ring-2 ring-offset-2 ring-brand-500' : 'opacity-70'
-                    }`}
-                    style={{ backgroundColor: c }}
-                  />
-                ))}
-              </div>
-            </div>
+          <div>
+            <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 uppercase mb-1">
+              Workspace Identifier Key
+            </label>
+            <input
+              type="text"
+              maxLength={4}
+              value={key}
+              onChange={(e) => setKey(e.target.value.toUpperCase())}
+              placeholder="e.g. DIP"
+              className="w-full px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-xs font-mono font-bold text-slate-800 dark:text-slate-200 uppercase"
+            />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
+            <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 uppercase mb-1">
               Description
             </label>
             <textarea
               rows={2}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Goals, team scope, or milestone overview..."
-              className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 resize-none"
+              placeholder="High-level roadmap and sprint scope..."
+              className="w-full px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-xs text-slate-800 dark:text-slate-200 resize-none"
             />
           </div>
 
@@ -117,15 +97,15 @@ export const CreateProjectModal = () => {
             <button
               type="button"
               onClick={() => setIsCreateProjectOpen(false)}
-              className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-500"
+              className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-500"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white font-bold text-xs shadow-md"
+              className="px-4 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs shadow-sm"
             >
-              Create Project
+              Create Workspace
             </button>
           </div>
         </form>

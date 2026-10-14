@@ -3,15 +3,19 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    border-color: rgba(226, 232, 240, 0.8);
+  body {
+    background-color: #0B0F17;
+    color: #F8FAFC;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
-  .dark * {
-    border-color: rgba(51, 65, 85, 0.6);
+  
+  html:not(.dark) body {
+    background-color: #F8FAFC;
+    color: #0F172A;
   }
 }
 
-/* Custom Scrollbars */
+/* Custom Sleek Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -20,41 +24,18 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.4);
+  background: rgba(100, 116, 139, 0.35);
   border-radius: 9999px;
 }
-.dark ::-webkit-scrollbar-thumb {
-  background: rgba(71, 85, 105, 0.5);
-}
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.7);
+  background: rgba(100, 116, 139, 0.6);
 }
 
-/* Kanban column and card smooth dragging */
-.kanban-column {
-  min-height: calc(100vh - 210px);
+/* 3D Transform Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
 }
 
-.glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-.dark .glass-panel {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(51, 65, 85, 0.5);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-}
-
-.dark .glass-card {
-  background: rgba(22, 30, 49, 0.9);
-  border: 1px solid rgba(51, 65, 85, 0.6);
+.perspective-1000 {
+  perspective: 1000px;
 }

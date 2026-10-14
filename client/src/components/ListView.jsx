@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, CheckSquare, MessageSquare, MoreHorizontal } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { useProject } from '../context/ProjectContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -25,15 +25,15 @@ export const ListView = () => {
   };
 
   return (
-    <div className="flex-1 px-6 pb-6 overflow-y-auto">
-      <div className="bg-white dark:bg-[#111827] rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+    <div className="w-full px-6 pb-8">
+      <div className="bg-white dark:bg-[#111827] rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-slate-200 dark:border-slate-800 text-[11px] uppercase font-bold text-slate-400 tracking-wider bg-slate-50/50 dark:bg-slate-900/50">
+            <tr className="border-b border-slate-200 dark:border-slate-800 text-[11px] uppercase font-bold text-slate-400 tracking-wider bg-slate-50/70 dark:bg-[#0B0F17]">
               <th className="py-3 px-4">Task Name</th>
               <th className="py-3 px-4">Status</th>
               <th className="py-3 px-4">Priority</th>
-              <th className="py-3 px-4">Due Date</th>
+              <th className="py-3 px-4">Target Date</th>
               <th className="py-3 px-4">Assignees</th>
               <th className="py-3 px-4 text-right">Subtasks</th>
             </tr>
@@ -42,7 +42,7 @@ export const ListView = () => {
             {filteredTasks.length === 0 ? (
               <tr>
                 <td colSpan={6} className="py-8 text-center text-slate-400">
-                  No tasks found matching your criteria.
+                  No records matching active criteria.
                 </td>
               </tr>
             ) : (
@@ -57,20 +57,20 @@ export const ListView = () => {
                     onClick={() => setSelectedTask(task)}
                     className="hover:bg-slate-50 dark:hover:bg-slate-800/40 cursor-pointer transition-colors"
                   >
-                    <td className="py-3.5 px-4 font-bold text-slate-800 dark:text-slate-100">
+                    <td className="py-3 px-4 font-semibold text-slate-900 dark:text-slate-100">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono text-brand-600 dark:text-brand-400 bg-brand-500/10 px-1.5 py-0.5 rounded">
-                          {task.id.slice(-3)}
+                        <span className="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">
+                          {task.id}
                         </span>
                         <span>{task.title}</span>
                       </div>
                     </td>
 
-                    <td className="py-3.5 px-4" onClick={(e) => e.stopPropagation()}>
+                    <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
                       <select
                         value={task.columnId}
                         onChange={(e) => moveTask(task.id, e.target.value)}
-                        className="text-xs font-bold px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 border-none text-slate-700 dark:text-slate-300 outline-none cursor-pointer"
+                        className="text-xs font-semibold px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 border-none text-slate-800 dark:text-slate-200 outline-none cursor-pointer"
                       >
                         {columns.map((col) => (
                           <option key={col.id} value={col.id}>
@@ -80,9 +80,9 @@ export const ListView = () => {
                       </select>
                     </td>
 
-                    <td className="py-3.5 px-4">
+                    <td className="py-3 px-4">
                       <span
-                        className={`inline-block px-2 py-0.5 rounded-md text-[11px] font-bold border capitalize ${
+                        className={`inline-block px-2 py-0.5 rounded text-[10px] font-bold border capitalize ${
                           priorityBadges[task.priority] || priorityBadges.medium
                         }`}
                       >
@@ -90,14 +90,14 @@ export const ListView = () => {
                       </span>
                     </td>
 
-                    <td className="py-3.5 px-4 text-slate-500 dark:text-slate-400">
+                    <td className="py-3 px-4 text-slate-500 dark:text-slate-400">
                       <div className="flex items-center gap-1.5">
                         <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                        {task.dueDate || 'No date'}
+                        {task.dueDate || '-'}
                       </div>
                     </td>
 
-                    <td className="py-3.5 px-4">
+                    <td className="py-3 px-4">
                       <div className="flex items-center -space-x-1.5">
                         {assigned.map((u) => (
                           <img
@@ -111,7 +111,7 @@ export const ListView = () => {
                       </div>
                     </td>
 
-                    <td className="py-3.5 px-4 text-right text-slate-400">
+                    <td className="py-3 px-4 text-right text-slate-400">
                       {totalSub > 0 ? (
                         <span>
                           {completedSub}/{totalSub}

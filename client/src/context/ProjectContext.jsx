@@ -3,119 +3,119 @@ import confetti from 'canvas-confetti';
 
 const INITIAL_PROJECTS = [
   {
-    id: 'proj-1',
-    name: 'PlanPulse SaaS Platform',
+    id: 'proj-enterprise-cloud',
+    name: 'Core Platform & API Infrastructure',
     key: 'PLN',
-    description: 'Next-generation agile workspace with real-time kanban and multi-tenant collaboration.',
-    color: '#8b5cf6',
+    description: 'Mission-critical distributed services, multi-region event pipelines, and real-time synchronization gateway.',
     columns: [
-      { id: 'col-backlog', name: 'Backlog', color: '#94a3b8' },
+      { id: 'col-todo', name: 'To Do', color: '#64748b' },
       { id: 'col-progress', name: 'In Progress', color: '#3b82f6' },
       { id: 'col-review', name: 'In Review', color: '#f59e0b' },
-      { id: 'col-done', name: 'Completed', color: '#10b981' },
+      { id: 'col-done', name: 'Done', color: '#10b981' },
     ],
     tasks: [
       {
-        id: 'task-101',
-        title: 'Architect WebSocket Real-Time Sync Pipeline',
-        description: 'Design low-latency pub/sub event channels using Socket.io to synchronize board movements and member presence across connected clients.',
+        id: 'PLN-101',
+        title: 'Architect Distributed WebSocket Gateway & Presence Engine',
+        description: 'Design low-latency pub/sub event channels using Socket.io to broadcast board movements, optimistic updates, and cursor states across distributed nodes.',
         columnId: 'col-progress',
         priority: 'urgent',
-        dueDate: '2026-10-16',
+        dueDate: '2026-10-18',
         assignees: ['user-nayab', 'user-marcus'],
-        tags: ['Backend', 'WebSockets', 'Architecture'],
+        tags: ['DistributedSystems', 'WebSockets', 'Architecture'],
         checklist: [
-          { id: 'c-1', text: 'Implement task:moved event broadcast', completed: true },
-          { id: 'c-2', text: 'Add optimistic UI updates on drag-and-drop', completed: true },
-          { id: 'c-3', text: 'Handle reconnections and client heartbeat', completed: false },
+          { id: 'c-1', text: 'Implement task:move event broadcast with optimistic local state', completed: true },
+          { id: 'c-2', text: 'Establish Redis adapter for multi-instance socket clustering', completed: true },
+          { id: 'c-3', text: 'Configure client heartbeat telemetry & automatic reconnects', completed: false },
         ],
         comments: [
           {
             id: 'comm-1',
             author: 'Nayab Farooq',
             avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
-            text: 'I have finalized the event payloads for card reordering. Testing with multi-tab sessions now!',
-            createdAt: '2 hours ago',
+            text: 'Benchmarked the broadcast throughput: sub-15ms latency across concurrent peer sessions.',
+            createdAt: '1 hour ago',
           },
           {
             id: 'comm-2',
             author: 'Marcus Vance',
             avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80',
-            text: 'Looks great! Make sure to debounce state persistence to prevent database write spikes.',
-            createdAt: '45 mins ago',
+            text: 'Payload compression looks pristine. Ready for load testing on the staging cluster.',
+            createdAt: '25 mins ago',
           },
         ],
         attachments: 2,
       },
       {
-        id: 'task-102',
-        title: 'Design Glassmorphism Kanban Card System',
-        description: 'Create fluid interactive cards with micro-animations, priority glow states, assignee chips, and subtle backdrop blurs.',
+        id: 'PLN-102',
+        title: 'Design High-Performance 3D Perspective Tilt & Micro-Interactions',
+        description: 'Develop a 60 FPS hardware-accelerated 3D tilt engine with mouse tracking and dynamic radial glare to elevate UI depth without layout shifting.',
         columnId: 'col-done',
         priority: 'high',
-        dueDate: '2026-10-14',
+        dueDate: '2026-10-15',
         assignees: ['user-sarah'],
-        tags: ['UI/UX', 'Tailwind', 'Design System'],
+        tags: ['DesignSystem', 'Animation', 'UI/UX'],
         checklist: [
-          { id: 'c-4', text: 'Draft Figma tokens for light/dark themes', completed: true },
-          { id: 'c-5', text: 'Create responsive tag overflow pill', completed: true },
-          { id: 'c-6', text: 'Add interactive hover scale transition', completed: true },
+          { id: 'c-4', text: 'Calculate normalized card center coordinates on mouse move', completed: true },
+          { id: 'c-5', text: 'Implement smooth cubic-bezier reset on mouse leave', completed: true },
+          { id: 'c-6', text: 'Verify 60fps performance profile under continuous interaction', completed: true },
         ],
         comments: [
           {
             id: 'comm-3',
             author: 'Sarah Chen',
             avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80',
-            text: 'Completed! High-contrast badges with accessibility compliance passed WCAG AAA.',
-            createdAt: '1 day ago',
+            text: 'Added perspective(800px) and will-change: transform. Zero layout thrashing verified.',
+            createdAt: 'Yesterday',
           },
         ],
         attachments: 3,
       },
       {
-        id: 'task-103',
-        title: 'Multi-User Role-Based Access & Guest Mode',
-        description: 'Build fast frictionless guest demo login alongside standard JWT authentication to allow instant preview by recruiters and clients.',
-        columnId: 'col-progress',
+        id: 'PLN-103',
+        title: 'Refactor Authentication Pipeline to OpenID Connect & Enterprise SSO',
+        description: 'Implement enterprise OAuth2/OIDC integration with SAML 2.0 federation and zero-friction guest simulation mode.',
+        columnId: 'col-todo',
         priority: 'high',
-        dueDate: '2026-10-18',
+        dueDate: '2026-10-22',
         assignees: ['user-nayab'],
-        tags: ['Auth', 'Security'],
+        tags: ['Security', 'OAuth2', 'Auth'],
         checklist: [
-          { id: 'c-7', text: 'Setup guest credential generation', completed: true },
-          { id: 'c-8', text: 'Create team switcher in header', completed: true },
-          { id: 'c-9', text: 'Restrict board deletion to admin roles', completed: false },
+          { id: 'c-7', text: 'Configure Okta and Azure AD identity provider endpoints', completed: false },
+          { id: 'c-8', text: 'Implement cryptographically signed state tokens with PKCE', completed: false },
+          { id: 'c-9', text: 'Enforce RBAC role claims in JWT verification middleware', completed: false },
         ],
         comments: [],
         attachments: 1,
       },
       {
-        id: 'task-104',
-        title: 'Continuous Deployment & Netlify Build Automation',
-        description: 'Configure clean production build output, client-side routing redirects via netlify.toml, and healthcheck monitors.',
+        id: 'PLN-104',
+        title: 'Automate SOC2 Type II Audit Logging & Compliance Ledger',
+        description: 'Implement immutable audit trail telemetry for all resource mutations, privilege escalations, and board reorder events.',
         columnId: 'col-review',
         priority: 'medium',
-        dueDate: '2026-10-15',
+        dueDate: '2026-10-17',
         assignees: ['user-aisha'],
-        tags: ['DevOps', 'CI/CD'],
+        tags: ['Compliance', 'DevOps', 'Security'],
         checklist: [
-          { id: 'c-10', text: 'Verify Vite production chunk splitting', completed: true },
-          { id: 'c-11', text: 'Configure custom domain SSL headers', completed: false },
+          { id: 'c-10', text: 'Structure structured JSON event schema with ISO-8601 timestamps', completed: true },
+          { id: 'c-11', text: 'Integrate CloudWatch log streaming with encrypted retention', completed: true },
+          { id: 'c-12', text: 'Generate quarterly compliance export report', completed: false },
         ],
         comments: [],
         attachments: 0,
       },
       {
-        id: 'task-105',
-        title: 'Export Board Data to CSV and Markdown Report',
-        description: 'Enable sprint managers to export the active board tasks, progress percentages, and assignee workload into standard formats.',
-        columnId: 'col-backlog',
+        id: 'PLN-105',
+        title: 'Optimize Database Query Indexes & Sharding Strategy',
+        description: 'Analyze slow query logs on PostgreSQL read replicas and introduce composite B-tree indices on project_id and column_id.',
+        columnId: 'col-todo',
         priority: 'low',
-        dueDate: '2026-10-25',
+        dueDate: '2026-10-29',
         assignees: ['user-marcus'],
-        tags: ['Feature', 'Reporting'],
+        tags: ['Database', 'Postgres', 'Performance'],
         checklist: [
-          { id: 'c-12', text: 'Design export modal with date range filters', completed: false },
+          { id: 'c-13', text: 'Review pg_stat_statements query execution plans', completed: false },
         ],
         comments: [],
         attachments: 0,
@@ -123,29 +123,28 @@ const INITIAL_PROJECTS = [
     ],
   },
   {
-    id: 'proj-2',
-    name: 'Mobile App Experience v2',
+    id: 'proj-mobile-suite',
+    name: 'Mobile Native & Tablet Ecosystem',
     key: 'MOB',
-    description: 'React Native & PWA mobile companion for sprint tracking on the go.',
-    color: '#ec4899',
+    description: 'Cross-platform iOS and Android suite built for executive triage and offline-first sprint management.',
     columns: [
-      { id: 'col-backlog-2', name: 'Backlog', color: '#94a3b8' },
-      { id: 'col-progress-2', name: 'In Progress', color: '#3b82f6' },
-      { id: 'col-review-2', name: 'In Review', color: '#f59e0b' },
-      { id: 'col-done-2', name: 'Completed', color: '#10b981' },
+      { id: 'col-todo-m', name: 'To Do', color: '#64748b' },
+      { id: 'col-progress-m', name: 'In Progress', color: '#3b82f6' },
+      { id: 'col-review-m', name: 'In Review', color: '#f59e0b' },
+      { id: 'col-done-m', name: 'Done', color: '#10b981' },
     ],
     tasks: [
       {
-        id: 'task-201',
-        title: 'Touch Gesture Drag & Reorder',
-        description: 'Implement fluid mobile touch gestures for swipe-to-complete and long-press card reordering.',
-        columnId: 'col-progress-2',
+        id: 'MOB-201',
+        title: 'Touch Gestures & Haptic Feedback Engine',
+        description: 'Implement fluid touch drag mechanics with native haptic pulses on task completion.',
+        columnId: 'col-progress-m',
         priority: 'urgent',
-        dueDate: '2026-10-20',
+        dueDate: '2026-10-21',
         assignees: ['user-nayab', 'user-sarah'],
-        tags: ['Mobile', 'Gestures'],
+        tags: ['Mobile', 'UX'],
         checklist: [
-          { id: 'c-21', text: 'Support haptic feedback API', completed: true },
+          { id: 'c-20', text: 'Calibrate haptic vibration patterns for drag pickup and drop', completed: true },
         ],
         comments: [],
         attachments: 1,
@@ -158,12 +157,12 @@ const ProjectContext = createContext();
 
 export const ProjectProvider = ({ children }) => {
   const [projects, setProjects] = useState(() => {
-    const saved = localStorage.getItem('planpulse_projects');
+    const saved = localStorage.getItem('pulsepm_projects');
     return saved ? JSON.parse(saved) : INITIAL_PROJECTS;
   });
 
   const [activeProjectId, setActiveProjectId] = useState(() => {
-    return localStorage.getItem('planpulse_active_project') || INITIAL_PROJECTS[0].id;
+    return localStorage.getItem('pulsepm_active_project') || INITIAL_PROJECTS[0].id;
   });
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -175,39 +174,39 @@ export const ProjectProvider = ({ children }) => {
   const [createTaskColumnId, setCreateTaskColumnId] = useState(null);
   const [isCreateProjectOpen, setIsCreateProjectOpen] = useState(false);
 
-  // Dark Mode State
+  // Dark Mode State (Defaults to sleek dark enterprise mode)
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('planpulse_theme');
+    const saved = localStorage.getItem('pulsepm_theme');
     if (saved) return saved === 'dark';
-    return true; // Default dark
+    return true;
   });
 
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('planpulse_theme', 'dark');
+      localStorage.setItem('pulsepm_theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('planpulse_theme', 'light');
+      localStorage.setItem('pulsepm_theme', 'light');
     }
   }, [isDarkMode]);
 
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 
-  // Activity Log & Notifications
+  // Activity Log
   const [activityLog, setActivityLog] = useState([
-    { id: 'act-1', text: 'Nayab Farooq created task "Architect WebSocket Pipeline"', time: '10 mins ago', type: 'create' },
-    { id: 'act-2', text: 'Sarah Chen marked "Design Glassmorphism Cards" as Completed', time: '1 hour ago', type: 'complete' },
-    { id: 'act-3', text: 'Marcus Vance commented on "WebSocket Real-Time Sync"', time: '2 hours ago', type: 'comment' },
+    { id: 'act-1', text: 'Nayab Farooq synchronized WebSocket Gateway service', time: '12m ago', type: 'sync' },
+    { id: 'act-2', text: 'Sarah Chen marked "3D Perspective Tilt" as Done', time: '1h ago', type: 'complete' },
+    { id: 'act-3', text: 'Marcus Vance reviewed PR #402 for Gateway clustering', time: '3h ago', type: 'review' },
   ]);
 
   // Sync to local storage
   useEffect(() => {
-    localStorage.setItem('planpulse_projects', JSON.stringify(projects));
+    localStorage.setItem('pulsepm_projects', JSON.stringify(projects));
   }, [projects]);
 
   useEffect(() => {
-    localStorage.setItem('planpulse_active_project', activeProjectId);
+    localStorage.setItem('pulsepm_active_project', activeProjectId);
   }, [activeProjectId]);
 
   const activeProject = projects.find((p) => p.id === activeProjectId) || projects[0];
@@ -222,7 +221,7 @@ export const ProjectProvider = ({ children }) => {
     setActivityLog((prev) => [newAct, ...prev.slice(0, 19)]);
   };
 
-  // Move task to another column or reorder
+  // Move task
   const moveTask = (taskId, targetColumnId) => {
     setProjects((prevProjects) => {
       return prevProjects.map((proj) => {
@@ -230,19 +229,22 @@ export const ProjectProvider = ({ children }) => {
 
         const updatedTasks = proj.tasks.map((task) => {
           if (task.id === taskId) {
-            // Trigger confetti if moved to completed!
-            if (targetColumnId === 'col-done' && task.columnId !== 'col-done') {
+            const isTargetDone = targetColumnId.includes('done');
+            const wasDone = task.columnId.includes('done');
+
+            // Trigger celebratory confetti on Done column
+            if (isTargetDone && !wasDone) {
               try {
                 confetti({
-                  particleCount: 60,
-                  spread: 70,
+                  particleCount: 50,
+                  spread: 60,
                   origin: { y: 0.7 },
-                  colors: ['#8b5cf6', '#10b981', '#3b82f6', '#f59e0b'],
+                  colors: ['#2563EB', '#10B981', '#3B82F6', '#059669'],
                 });
               } catch (e) {}
-              logActivity(`Completed task: "${task.title}"`, 'complete');
+              logActivity(`Completed task "${task.title}"`, 'complete');
             } else {
-              logActivity(`Moved task "${task.title}" to ${targetColumnId.replace('col-', '').toUpperCase()}`, 'move');
+              logActivity(`Moved "${task.title}" to ${targetColumnId.replace('col-', '').toUpperCase()}`, 'move');
             }
             return { ...task, columnId: targetColumnId };
           }
@@ -256,13 +258,14 @@ export const ProjectProvider = ({ children }) => {
 
   // Create new task
   const createTask = (taskData) => {
+    const count = (activeProject.tasks?.length || 0) + 1;
     const newTask = {
-      id: 'task-' + Date.now(),
+      id: `${activeProject.key}-${100 + count}`,
       title: taskData.title || 'Untitled Task',
       description: taskData.description || '',
       columnId: taskData.columnId || activeProject.columns[0].id,
       priority: taskData.priority || 'medium',
-      dueDate: taskData.dueDate || new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
+      dueDate: taskData.dueDate || new Date(Date.now() + 86400000 * 4).toISOString().split('T')[0],
       assignees: taskData.assignees || ['user-nayab'],
       tags: taskData.tags || ['Feature'],
       checklist: taskData.checklist || [],
@@ -277,10 +280,10 @@ export const ProjectProvider = ({ children }) => {
       })
     );
 
-    logActivity(`Created new task "${newTask.title}"`, 'create');
+    logActivity(`Created task "${newTask.title}"`, 'create');
   };
 
-  // Update existing task
+  // Update task
   const updateTask = (taskId, updates) => {
     setProjects((prev) =>
       prev.map((proj) => {
@@ -316,7 +319,7 @@ export const ProjectProvider = ({ children }) => {
     }
   };
 
-  // Add comment to task
+  // Add comment
   const addComment = (taskId, text, authorName, authorAvatar) => {
     const newComment = {
       id: 'comm-' + Date.now(),
@@ -333,26 +336,26 @@ export const ProjectProvider = ({ children }) => {
     logActivity(`${authorName} commented on task`, 'comment');
   };
 
-  // Create Project
+  // Create Project Workspace
   const createProject = (projData) => {
+    const key = (projData.key || projData.name.substring(0, 3)).toUpperCase();
     const newProj = {
       id: 'proj-' + Date.now(),
-      name: projData.name || 'New Project',
-      key: projData.key || 'NEW',
+      name: projData.name || 'New Workspace',
+      key,
       description: projData.description || '',
-      color: projData.color || '#8b5cf6',
       columns: [
-        { id: 'col-backlog-' + Date.now(), name: 'Backlog', color: '#94a3b8' },
+        { id: 'col-todo-' + Date.now(), name: 'To Do', color: '#64748b' },
         { id: 'col-progress-' + Date.now(), name: 'In Progress', color: '#3b82f6' },
         { id: 'col-review-' + Date.now(), name: 'In Review', color: '#f59e0b' },
-        { id: 'col-done-' + Date.now(), name: 'Completed', color: '#10b981' },
+        { id: 'col-done-' + Date.now(), name: 'Done', color: '#10b981' },
       ],
       tasks: [],
     };
 
     setProjects((prev) => [...prev, newProj]);
     setActiveProjectId(newProj.id);
-    logActivity(`Created project "${newProj.name}"`, 'create');
+    logActivity(`Created workspace "${newProj.name}"`, 'create');
   };
 
   return (
