@@ -197,6 +197,7 @@ export const ProjectProvider = ({ children }) => {
   const [isCreateTaskOpen, setIsCreateTaskOpen] = useState(false);
   const [createTaskColumnId, setCreateTaskColumnId] = useState(null);
   const [isCreateProjectOpen, setIsCreateProjectOpen] = useState(false);
+  const [isDesktopModalOpen, setIsDesktopModalOpen] = useState(false);
 
   // Landing vs Workspace screen state (Default to Landing screen on root URL)
   const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(() => {
@@ -434,6 +435,8 @@ export const ProjectProvider = ({ children }) => {
         setCreateTaskColumnId,
         isCreateProjectOpen,
         setIsCreateProjectOpen,
+        isDesktopModalOpen,
+        setIsDesktopModalOpen,
         isWorkspaceOpen,
         setIsWorkspaceOpen,
         isDarkMode,

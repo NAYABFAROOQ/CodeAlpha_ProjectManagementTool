@@ -10,6 +10,7 @@ import {
   Moon,
   ChevronDown,
   Box,
+  Monitor,
 } from 'lucide-react';
 import { useProject } from '../context/ProjectContext';
 import { useAuth } from '../context/AuthContext';
@@ -31,6 +32,7 @@ export const Navbar = () => {
     isDarkMode,
     toggleDarkMode,
     setIsWorkspaceOpen,
+    setIsDesktopModalOpen,
   } = useProject();
 
   const { currentUser, teamMembers, switchUser } = useAuth();
@@ -195,6 +197,16 @@ export const Navbar = () => {
               onClose={() => setShowNotifications(false)}
             />
           </div>
+
+          {/* Get Desktop App Button */}
+          <button
+            onClick={() => setIsDesktopModalOpen(true)}
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/[0.04] hover:bg-emerald-500/10 text-stone-300 hover:text-emerald-300 border border-white/10 text-xs font-semibold transition-colors"
+            title="Download Pulse PM Desktop App"
+          >
+            <Monitor className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="hidden xl:inline">Desktop</span>
+          </button>
 
           {/* Dark/Light Mode */}
           <button

@@ -12,6 +12,7 @@ import { LandingPage } from './components/LandingPage';
 import { TaskDetailModal } from './components/TaskDetailModal';
 import { CreateTaskModal } from './components/CreateTaskModal';
 import { CreateProjectModal } from './components/CreateProjectModal';
+import { DesktopAppModal } from './components/DesktopAppModal';
 
 const DashboardContent = () => {
   const {
@@ -93,6 +94,9 @@ const DashboardContent = () => {
           <CreateProjectModal />
         </div>
       )}
+
+      {/* Global Desktop App Download Modal */}
+      <DesktopAppModal />
     </div>
   );
 };
