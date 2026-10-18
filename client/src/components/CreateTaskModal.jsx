@@ -14,7 +14,7 @@ export const CreateTaskModal = () => {
   const [priority, setPriority] = useState('medium');
   const [dueDate, setDueDate] = useState('');
   const [assigneeId, setAssigneeId] = useState(currentUser.id);
-  const [tagInput, setTagInput] = useState('Backend');
+  const [tagInput, setTagInput] = useState('Feature');
 
   if (!isCreateTaskOpen) return null;
 
@@ -40,144 +40,145 @@ export const CreateTaskModal = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0a1a14]/75 backdrop-blur-md"
       onClick={() => setIsCreateTaskOpen(false)}
     >
       <div
-        className="w-full max-w-lg bg-white dark:bg-[#111827] rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6"
+        className="w-full max-w-lg bg-stone-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-emerald-500/20 p-6 text-stone-100"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-4">
-          <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-            <Plus className="w-4 h-4 text-brand-500" />
-            Quick Add Task
+        <div className="flex items-center justify-between pb-3.5 border-b border-white/10 mb-4">
+          <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <Plus className="w-4 h-4 text-emerald-400" />
+            Create New Task
           </h3>
           <button
             onClick={() => setIsCreateTaskOpen(false)}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+            className="p-1.5 rounded-xl text-stone-400 hover:text-white hover:bg-white/10 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-3.5">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 uppercase mb-1">
-              Task Title *
+            <label className="text-[11px] font-bold uppercase text-stone-400 tracking-wider block mb-1.5">
+              Task Title
             </label>
             <input
               type="text"
               required
+              autoFocus
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g. Implement multi-region Redis cluster..."
-              className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-brand-500"
+              placeholder="e.g., Design Mobile Onboarding Flow"
+              className="w-full px-3.5 py-2.5 rounded-2xl bg-white/[0.04] border border-white/10 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 uppercase mb-1">
+            <label className="text-[11px] font-bold uppercase text-stone-400 tracking-wider block mb-1.5">
               Description
             </label>
             <textarea
               rows={2}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Requirements or architectural context..."
-              className="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-brand-500 resize-none"
+              placeholder="Brief summary of requirements..."
+              className="w-full px-3.5 py-2.5 rounded-2xl bg-white/[0.04] border border-white/10 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 transition-colors"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-2 gap-3.5">
             <div>
-              <label className="block font-bold text-slate-600 dark:text-slate-300 uppercase text-[10px] mb-1">
-                Workflow Column
+              <label className="text-[11px] font-bold uppercase text-stone-400 tracking-wider block mb-1.5">
+                Stage
               </label>
               <select
                 value={createTaskColumnId || columnId}
                 onChange={(e) => setColumnId(e.target.value)}
-                className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-semibold"
+                className="w-full p-2 rounded-xl bg-stone-800 border border-white/10 text-xs font-medium text-stone-200 outline-none cursor-pointer focus:border-emerald-500"
               >
-                {columns.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
+                {columns.map((col) => (
+                  <option key={col.id} value={col.id} className="bg-stone-900 text-stone-200">
+                    {col.name}
                   </option>
                 ))}
               </select>
             </div>
 
             <div>
-              <label className="block font-bold text-slate-600 dark:text-slate-300 uppercase text-[10px] mb-1">
+              <label className="text-[11px] font-bold uppercase text-stone-400 tracking-wider block mb-1.5">
                 Priority
               </label>
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-semibold"
+                className="w-full p-2 rounded-xl bg-stone-800 border border-white/10 text-xs font-medium text-stone-200 outline-none cursor-pointer focus:border-emerald-500"
               >
-                <option value="urgent">🔴 Urgent</option>
-                <option value="high">🟠 High</option>
-                <option value="medium">🔵 Medium</option>
-                <option value="low">⚪ Low</option>
+                <option value="urgent" className="bg-stone-900">🔴 Urgent</option>
+                <option value="high" className="bg-stone-900">🟠 High</option>
+                <option value="medium" className="bg-stone-900">🟡 Medium</option>
+                <option value="low" className="bg-stone-900">🟢 Normal</option>
               </select>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-2 gap-3.5">
             <div>
-              <label className="block font-bold text-slate-600 dark:text-slate-300 uppercase text-[10px] mb-1">
+              <label className="text-[11px] font-bold uppercase text-stone-400 tracking-wider block mb-1.5">
                 Assignee
               </label>
               <select
                 value={assigneeId}
                 onChange={(e) => setAssigneeId(e.target.value)}
-                className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-semibold"
+                className="w-full p-2 rounded-xl bg-stone-800 border border-white/10 text-xs font-medium text-stone-200 outline-none cursor-pointer focus:border-emerald-500"
               >
                 {teamMembers.map((m) => (
-                  <option key={m.id} value={m.id}>
-                    {m.name}
+                  <option key={m.id} value={m.id} className="bg-stone-900 text-stone-200">
+                    {m.name} ({m.role})
                   </option>
                 ))}
               </select>
             </div>
 
             <div>
-              <label className="block font-bold text-slate-600 dark:text-slate-300 uppercase text-[10px] mb-1">
-                Due Date
+              <label className="text-[11px] font-bold uppercase text-stone-400 tracking-wider block mb-1.5">
+                Target Due Date
               </label>
               <input
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-semibold"
+                className="w-full p-2 rounded-xl bg-stone-800 border border-white/10 text-xs font-medium text-stone-200 outline-none focus:border-emerald-500"
               />
             </div>
           </div>
 
           <div>
-            <label className="block font-bold text-slate-600 dark:text-slate-300 uppercase text-[10px] mb-1">
+            <label className="text-[11px] font-bold uppercase text-stone-400 tracking-wider block mb-1.5">
               Tags (comma separated)
             </label>
             <input
               type="text"
               value={tagInput}
               onChange={(e) => setTagInput(e.target.value)}
-              placeholder="Backend, Infra, Bug..."
-              className="w-full px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 text-xs text-slate-800 dark:text-slate-200"
+              placeholder="UI/UX, Frontend, Billing"
+              className="w-full px-3.5 py-2.5 rounded-2xl bg-white/[0.04] border border-white/10 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 transition-colors"
             />
           </div>
 
-          <div className="pt-3 flex items-center justify-end gap-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex items-center justify-end gap-2 pt-2">
             <button
               type="button"
               onClick={() => setIsCreateTaskOpen(false)}
-              className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-stone-400 hover:text-white hover:bg-white/10 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs shadow-sm transition-colors"
+              className="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-amber-600 hover:from-emerald-500 hover:to-amber-500 text-white text-xs font-semibold shadow-lg shadow-emerald-600/30 transition-all active:scale-95"
             >
               Create Task
             </button>

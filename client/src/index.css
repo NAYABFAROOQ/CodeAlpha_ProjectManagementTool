@@ -2,20 +2,124 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Luxury Forest Emerald & Golden Amber Mesh Gradient (NO purple, NO blue, NO black) */
+.aurora-mesh-bg {
+  background-color: #0a1a14 !important;
+  background-image: 
+    radial-gradient(circle at 18% 18%, rgba(16, 185, 129, 0.22), transparent 42%),
+    radial-gradient(circle at 82% 82%, rgba(245, 158, 11, 0.18), transparent 42%),
+    radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.12), transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(52, 211, 153, 0.15), transparent 38%) !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+html:not(.dark) .aurora-mesh-bg {
+  background-color: #faf8f5 !important;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.12), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.08), transparent 50%) !important;
+}
+
 @layer base {
   body {
-    background-color: #0B0F17;
-    color: #F8FAFC;
+    background-color: #0a1a14;
+    background: radial-gradient(circle at 18% 18%, rgba(16, 185, 129, 0.22), transparent 42%),
+                radial-gradient(circle at 82% 82%, rgba(245, 158, 11, 0.18), transparent 42%),
+                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.12), transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(52, 211, 153, 0.15), transparent 38%),
+                #0a1a14;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #f7fee7;
+    min-height: 100vh;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    overflow-x: hidden;
+    overflow-y: auto;
   }
-  
+
   html:not(.dark) body {
-    background-color: #F8FAFC;
-    color: #0F172A;
+    background-color: #faf8f5;
+    background: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.12), transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1), transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.08), transparent 50%),
+                #faf8f5;
+    color: #1c2e24;
   }
 }
 
-/* Custom Sleek Scrollbar */
+/* Glassmorphism Containers & Cards (Emerald & Amber tint) */
+.glass-panel {
+  background: rgba(18, 42, 33, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(52, 211, 153, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(10, 26, 20, 0.45);
+}
+
+.glass-card {
+  background: rgba(18, 42, 33, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(52, 211, 153, 0.14);
+  box-shadow: 0 8px 24px 0 rgba(10, 26, 20, 0.4);
+  transform-style: preserve-3d;
+}
+
+/* Real 3D Perspective Tilt Hover Animations */
+.kanban-column-perspective {
+  perspective: 1000px;
+}
+
+.task-card-3d {
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow, border-color;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-card-3d:hover {
+  transform: translateY(-6px) rotateX(4deg) rotateY(-2deg) scale(1.02);
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  box-shadow: 0 14px 28px -8px rgba(16, 185, 129, 0.35), 0 8px 32px 0 rgba(10, 26, 20, 0.5) !important;
+}
+
+/* 3D Flip Card Effect */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Light Mode Glassmorphism Adaptations */
+html:not(.dark) .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(226, 218, 206, 0.9);
+  box-shadow: 0 8px 24px 0 rgba(16, 185, 129, 0.08);
+}
+
+html:not(.dark) .glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(230, 222, 210, 0.95);
+  box-shadow: 0 8px 20px 0 rgba(16, 185, 129, 0.06);
+}
+
+html:not(.dark) .task-card-3d:hover {
+  border-color: rgba(16, 185, 129, 0.6) !important;
+  box-shadow: 0 14px 28px -8px rgba(16, 185, 129, 0.22), 0 8px 20px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Custom Sleek Scrollbar in Emerald / Warm Stone */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -24,18 +128,17 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.35);
+  background: rgba(16, 185, 129, 0.3);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.6);
+  background: rgba(16, 185, 129, 0.6);
 }
 
-/* 3D Transform Utilities */
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.perspective-1000 {
-  perspective: 1000px;
+/* 3D Canvas Container */
+.interactive-canvas-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: auto;
+  z-index: 0;
 }

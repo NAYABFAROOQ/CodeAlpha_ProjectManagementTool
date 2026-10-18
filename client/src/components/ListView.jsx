@@ -18,30 +18,30 @@ export const ListView = () => {
   });
 
   const priorityBadges = {
-    urgent: 'bg-rose-500/10 text-rose-500 border-rose-500/20',
-    high: 'bg-amber-500/10 text-amber-500 border-amber-500/20',
-    medium: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
-    low: 'bg-slate-500/10 text-slate-400 border-slate-500/20',
+    urgent: 'bg-rose-500/15 text-rose-300 border-rose-500/30',
+    high: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+    medium: 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30',
+    low: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
   };
 
   return (
-    <div className="w-full px-6 pb-8">
-      <div className="bg-white dark:bg-[#111827] rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+    <div className="w-full px-6 pb-12">
+      <div className="glass-panel rounded-3xl overflow-hidden">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-slate-200 dark:border-slate-800 text-[11px] uppercase font-bold text-slate-400 tracking-wider bg-slate-50/70 dark:bg-[#0B0F17]">
-              <th className="py-3 px-4">Task Name</th>
-              <th className="py-3 px-4">Status</th>
-              <th className="py-3 px-4">Priority</th>
-              <th className="py-3 px-4">Target Date</th>
-              <th className="py-3 px-4">Assignees</th>
-              <th className="py-3 px-4 text-right">Subtasks</th>
+            <tr className="border-b border-white/[0.08] text-[11px] uppercase font-bold text-stone-400 tracking-wider bg-white/[0.02]">
+              <th className="py-3.5 px-5">Task Name</th>
+              <th className="py-3.5 px-5">Stage</th>
+              <th className="py-3.5 px-5">Priority</th>
+              <th className="py-3.5 px-5">Target Date</th>
+              <th className="py-3.5 px-5">Assignees</th>
+              <th className="py-3.5 px-5 text-right">Subtasks</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80 text-xs font-medium">
+          <tbody className="divide-y divide-white/[0.05] text-xs font-medium text-stone-200">
             {filteredTasks.length === 0 ? (
               <tr>
-                <td colSpan={6} className="py-8 text-center text-slate-400">
+                <td colSpan={6} className="py-8 text-center text-stone-400">
                   No records matching active criteria.
                 </td>
               </tr>
@@ -55,70 +55,63 @@ export const ListView = () => {
                   <tr
                     key={task.id}
                     onClick={() => setSelectedTask(task)}
-                    className="hover:bg-slate-50 dark:hover:bg-slate-800/40 cursor-pointer transition-colors"
+                    className="hover:bg-emerald-500/[0.06] cursor-pointer transition-colors"
                   >
-                    <td className="py-3 px-4 font-semibold text-slate-900 dark:text-slate-100">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">
-                          {task.id}
-                        </span>
-                        <span>{task.title}</span>
-                      </div>
+                    <td className="py-3.5 px-5 font-semibold text-white">
+                      <span>{task.title}</span>
                     </td>
 
-                    <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
+                    <td className="py-3.5 px-5" onClick={(e) => e.stopPropagation()}>
                       <select
                         value={task.columnId}
                         onChange={(e) => moveTask(task.id, e.target.value)}
-                        className="text-xs font-semibold px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 border-none text-slate-800 dark:text-slate-200 outline-none cursor-pointer"
+                        className="text-xs font-semibold px-2.5 py-1 rounded-xl bg-stone-900/80 border border-emerald-500/30 text-stone-200 outline-none cursor-pointer hover:border-emerald-500 transition-colors"
                       >
                         {columns.map((col) => (
-                          <option key={col.id} value={col.id}>
+                          <option key={col.id} value={col.id} className="bg-stone-900 text-stone-200">
                             {col.name}
                           </option>
                         ))}
                       </select>
                     </td>
 
-                    <td className="py-3 px-4">
+                    <td className="py-3.5 px-5">
                       <span
-                        className={`inline-block px-2 py-0.5 rounded text-[10px] font-bold border capitalize ${
+                        className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold tracking-wide border ${
                           priorityBadges[task.priority] || priorityBadges.medium
                         }`}
                       >
-                        {task.priority}
+                        {task.priority?.toUpperCase()}
                       </span>
                     </td>
 
-                    <td className="py-3 px-4 text-slate-500 dark:text-slate-400">
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                        {task.dueDate || '-'}
-                      </div>
+                    <td className="py-3.5 px-5 text-stone-400">
+                      {task.dueDate ? (
+                        <div className="flex items-center gap-1.5">
+                          <Calendar className="w-3.5 h-3.5 text-amber-400" />
+                          <span>{task.dueDate}</span>
+                        </div>
+                      ) : (
+                        <span className="text-stone-500">—</span>
+                      )}
                     </td>
 
-                    <td className="py-3 px-4">
+                    <td className="py-3.5 px-5">
                       <div className="flex items-center -space-x-1.5">
-                        {assigned.map((u) => (
+                        {assigned.map((user) => (
                           <img
-                            key={u.id}
-                            src={u.avatar}
-                            alt=""
-                            title={u.name}
-                            className="w-5 h-5 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover"
+                            key={user.id}
+                            src={user.avatar}
+                            alt={user.name}
+                            title={user.name}
+                            className="w-5 h-5 rounded-full ring-2 ring-stone-900 object-cover"
                           />
                         ))}
                       </div>
                     </td>
 
-                    <td className="py-3 px-4 text-right text-slate-400">
-                      {totalSub > 0 ? (
-                        <span>
-                          {completedSub}/{totalSub}
-                        </span>
-                      ) : (
-                        '-'
-                      )}
+                    <td className="py-3.5 px-5 text-right font-mono text-emerald-400">
+                      {totalSub > 0 ? `${completedSub}/${totalSub}` : '—'}
                     </td>
                   </tr>
                 );

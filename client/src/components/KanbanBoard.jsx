@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { Plus, Sparkles } from 'lucide-react';
 import { useProject } from '../context/ProjectContext';
 import { TaskCard } from './TaskCard';
 
@@ -56,12 +56,13 @@ export const KanbanBoard = () => {
   };
 
   return (
-    <div className="w-full overflow-x-auto pb-8">
-      {/* Kanban Columns Container sitting naturally within page vertical flow */}
-      <div className="flex items-start gap-4 min-w-max px-6">
+    <div className="w-full overflow-x-auto pb-12">
+      {/* Kanban Columns Container with 3D Perspective Context */}
+      <div className="flex items-start gap-5 min-w-max px-6">
         {columns.map((column) => {
           const colTasks = filteredTasks.filter((t) => t.columnId === column.id);
           const isOver = activeDragCol === column.id;
+          const colColor = column.color || '#10b981';
 
           return (
             <div
@@ -69,46 +70,47 @@ export const KanbanBoard = () => {
               onDragOver={(e) => handleDragOver(e, column.id)}
               onDragLeave={handleDragLeave}
               onDrop={(e) => handleDrop(e, column.id)}
-              className={`w-80 flex-shrink-0 flex flex-col rounded-xl p-3 transition-colors duration-150 border ${
+              className={`w-80 flex-shrink-0 flex flex-col rounded-3xl p-4 glass-panel transition-all duration-200 kanban-column-perspective ${
                 isOver
-                  ? 'bg-brand-500/5 dark:bg-brand-500/10 border-brand-500/60 ring-2 ring-brand-500/20'
-                  : 'bg-slate-100/80 dark:bg-[#0e1422] border-slate-200/90 dark:border-slate-800/80'
+                  ? 'ring-2 ring-emerald-500/70 border-emerald-500/60 bg-emerald-500/[0.08]'
+                  : ''
               }`}
             >
-              {/* Column Header */}
-              <div className="flex items-center justify-between mb-3 px-1">
-                <div className="flex items-center gap-2">
+              {/* Column Header: Clean title with glowing status indicator dot (NO task availability count) */}
+              <div className="flex items-center justify-between mb-3.5 px-1">
+                <div className="flex items-center gap-2.5">
                   <span
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: column.color || '#3b82f6' }}
+                    className="w-2.5 h-2.5 rounded-full transition-shadow duration-300"
+                    style={{
+                      backgroundColor: colColor,
+                      boxShadow: `0 0 10px ${colColor}, 0 0 4px ${colColor}`,
+                    }}
                   />
-                  <h3 className="font-bold text-xs uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                  <h3 className="font-semibold text-xs tracking-wider uppercase text-stone-200">
                     {column.name}
                   </h3>
-                  <span className="px-1.5 py-0.2 rounded text-[11px] font-semibold bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 shadow-xs">
-                    {colTasks.length}
-                  </span>
                 </div>
 
                 <button
                   onClick={() => handleOpenAdd(column.id)}
-                  className="p-1 rounded-md text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 hover:bg-white dark:hover:bg-slate-800 transition-colors"
+                  className="p-1.5 rounded-lg text-stone-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition-colors"
                   title="Add task"
                 >
                   <Plus className="w-3.5 h-3.5" />
                 </button>
               </div>
 
-              {/* Tasks List */}
-              <div className="flex-1 space-y-2.5 min-h-[380px]">
+              {/* Tasks List inside 3D Perspective Container */}
+              <div className="flex-1 space-y-3 min-h-[380px] kanban-column-perspective py-1">
                 {colTasks.length === 0 ? (
-                  <div className="h-32 border border-dashed border-slate-200 dark:border-slate-800/80 rounded-xl flex flex-col items-center justify-center text-xs text-slate-400 dark:text-slate-500">
-                    <span>No tasks in {column.name}</span>
+                  <div className="h-32 border border-dashed border-emerald-500/20 rounded-2xl flex flex-col items-center justify-center text-xs text-stone-400 gap-1.5 p-4 text-center">
+                    <Sparkles className="w-4 h-4 text-emerald-400/50" />
+                    <span className="text-[11px] text-stone-400">Empty stage</span>
                     <button
                       onClick={() => handleOpenAdd(column.id)}
-                      className="mt-1.5 text-brand-600 dark:text-brand-400 hover:underline font-semibold text-[11px]"
+                      className="text-emerald-400 hover:text-emerald-300 hover:underline font-semibold text-[11px] mt-0.5"
                     >
-                      + Quick Add
+                      + Add Task
                     </button>
                   </div>
                 ) : (
@@ -119,10 +121,10 @@ export const KanbanBoard = () => {
               {/* Add Task Footer Button */}
               <button
                 onClick={() => handleOpenAdd(column.id)}
-                className="mt-2.5 w-full py-2 px-3 rounded-lg border border-dashed border-slate-300 dark:border-slate-800/80 hover:border-slate-400 dark:hover:border-slate-700 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-white dark:hover:bg-slate-800/40 flex items-center justify-center gap-1.5 transition-all"
+                className="mt-3 w-full py-2 px-3 rounded-2xl border border-dashed border-emerald-500/20 hover:border-emerald-500/50 text-xs font-medium text-stone-400 hover:text-emerald-200 hover:bg-emerald-500/10 flex items-center justify-center gap-1.5 transition-all group"
               >
-                <Plus className="w-3.5 h-3.5" />
-                Add Task
+                <Plus className="w-3.5 h-3.5 text-stone-400 group-hover:text-emerald-400 transition-colors" />
+                <span>Add Task</span>
               </button>
             </div>
           );
