@@ -198,6 +198,36 @@ export const ProjectProvider = ({ children }) => {
   const [createTaskColumnId, setCreateTaskColumnId] = useState(null);
   const [isCreateProjectOpen, setIsCreateProjectOpen] = useState(false);
 
+  // Landing vs Workspace screen state (Default to Landing screen on root URL)
+  const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      if (window.location.hash === '#workspace' || window.location.search.includes('view=workspace')) {
+        return true;
+      }
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (isWorkspaceOpen) {
+      if (window.location.hash !== '#workspace') {
+        window.history.pushState(null, '', '#workspace');
+      }
+    } else {
+      if (window.location.hash === '#workspace') {
+        window.history.pushState(null, '', window.location.pathname);
+      }
+    }
+  }, [isWorkspaceOpen]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setIsWorkspaceOpen(window.location.hash === '#workspace');
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   // Dark mode (Default to sleek deep forest pine)
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('pulsepm_theme');
@@ -404,6 +434,8 @@ export const ProjectProvider = ({ children }) => {
         setCreateTaskColumnId,
         isCreateProjectOpen,
         setIsCreateProjectOpen,
+        isWorkspaceOpen,
+        setIsWorkspaceOpen,
         isDarkMode,
         toggleDarkMode,
         moveTask,

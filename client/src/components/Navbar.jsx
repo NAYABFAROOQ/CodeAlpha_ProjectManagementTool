@@ -30,6 +30,7 @@ export const Navbar = () => {
     setIsCreateProjectOpen,
     isDarkMode,
     toggleDarkMode,
+    setIsWorkspaceOpen,
   } = useProject();
 
   const { currentUser, teamMembers, switchUser } = useAuth();
@@ -42,12 +43,16 @@ export const Navbar = () => {
       <div className="flex items-center justify-between gap-4">
         {/* Left: Brand & Workspace Switcher */}
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-amber-500 flex items-center justify-center shadow-lg shadow-emerald-500/25 border border-white/20">
+          <div
+            onClick={() => setIsWorkspaceOpen(false)}
+            className="flex items-center gap-2.5 cursor-pointer group"
+            title="Return to Welcome Screen"
+          >
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-amber-500 flex items-center justify-center shadow-lg shadow-emerald-500/25 border border-white/20 group-hover:scale-105 transition-transform">
               <span className="font-bold text-sm text-stone-900 font-mono">P</span>
             </div>
             <div className="hidden sm:block">
-              <span className="font-bold text-sm tracking-tight text-white">
+              <span className="font-bold text-sm tracking-tight text-white group-hover:text-emerald-300 transition-colors">
                 Pulse<span className="text-emerald-400">PM</span>
               </span>
             </div>
