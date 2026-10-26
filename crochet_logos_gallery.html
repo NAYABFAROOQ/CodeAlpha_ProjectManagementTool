@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Yarn House — Branding & Instagram Kit</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #faf8f5;
+      color: #2d3748;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #2b4335;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    p.subtitle {
+      font-size: 15px;
+      color: #718096;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .folder-alert {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 1240px;
+      width: 100%;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      border: 1px solid #edf2f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card.featured {
+      border: 2px solid #ec4899;
+      box-shadow: 0 12px 30px rgba(236, 72, 153, 0.2);
+    }
+    .card.primary-choice {
+      border: 2px solid #10b981;
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.2);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a202c;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #718096;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .badge-post { background: #fce7f3; color: #be185d; }
+    .badge-star { background: #d1fae5; color: #065f46; }
+    .badge-pfp { background: #feebc8; color: #c05621; }
+    .badge-pastel { background: #e9d8fd; color: #6b46c1; }
+  </style>
+</head>
+<body>
+
+  <h1>🏡 The Yarn House</h1>
+  <p class="subtitle">Complete Branding Kit & Instagram Launch Post</p>
+
+  <div class="folder-alert">
+    📁 All high-resolution files are saved on your Desktop: <strong>Desktop/TheYarnHouse_Branding/</strong>
+  </div>
+
+  <div class="gallery">
+    <!-- Card 1: Coming Soon Post v2 (Editorial Serif) -->
+    <div class="card featured">
+      <span class="badge badge-post">📢 Instagram Post (Editorial Serif)</span>
+      <img src="TheYarnHouse_ComingSoon_v2.jpg" alt="The Yarn House Coming Soon Post v2">
+      <div class="card-title">"Coming Soon" (One-Color Serif)</div>
+      <div class="card-desc">
+        Modern chic editorial serif font in deep espresso brown reading <em>"COMING SOON • The Yarn House • Tote Bags • Keychains • Granny Squares • Plushies"</em> framed by pastel yarn cakes, wooden hooks, and strawberry charms.
+      </div>
+    </div>
+
+    <!-- Card 2: Official The Yarn House Cottage PFP -->
+    <div class="card primary-choice">
+      <span class="badge badge-star">⭐ Official Brand PFP</span>
+      <img src="TheYarnHouse_Instagram_PFP.jpg" alt="The Yarn House Cottage PFP">
+      <div class="card-title">Cottage Profile Picture</div>
+      <div class="card-desc">
+        Whimsical cottage with crochet-stitch roof shingles, curly lavender yarn smoke, strawberry-pink yarn cake with heart band, matcha granny square, and wooden hooks inside an arched brand title.
+      </div>
+    </div>
+
+    <!-- Card 3: Clean Doodles PFP -->
+    <div class="card">
+      <span class="badge badge-pfp">Alternative PFP</span>
+      <img src="TheYarnHouse_Doodles_PFP.jpg" alt="Cozy Crochet Doodles PFP">
+      <div class="card-title">Cozy Doodles (No Text)</div>
+      <div class="card-desc">
+        Aesthetic doodle collection: soft yarn ball, wooden hooks & needles, vintage floral granny square, cute amigurumi strawberry keychain, and clean canvas project tote bag.
+      </div>
+    </div>
+
+    <!-- Card 4: Modern Pastel Logo -->
+    <div class="card">
+      <span class="badge badge-pastel">Logo Option</span>
+      <img src="TheYarnHouse_Pastel_Logo.jpg" alt="Modern Pastel Rainbow Logo">
+      <div class="card-title">Pastel Rainbow Swirl</div>
+      <div class="card-desc">
+        Modern pastel rainbow gradient spiral yarn swirl forming a sleek crochet hook with dreamy aesthetic loops and sparkle accents.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

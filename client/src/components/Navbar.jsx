@@ -41,16 +41,16 @@ export const Navbar = () => {
   const [showNotifications, setShowNotifications] = useState(false);
 
   return (
-    <header className="sticky top-0 z-30 bg-[#0a1a14]/85 backdrop-blur-xl border-b border-emerald-500/20 px-6 py-3 transition-colors">
-      <div className="flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-30 bg-[#0a1a14]/85 backdrop-blur-xl border-b border-emerald-500/20 px-3.5 sm:px-6 py-2.5 sm:py-3 transition-colors">
+      <div className="flex items-center justify-between gap-2.5 sm:gap-4">
         {/* Left: Brand & Workspace Switcher */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <div
             onClick={() => setIsWorkspaceOpen(false)}
-            className="flex items-center gap-2.5 cursor-pointer group"
+            className="flex items-center gap-2 sm:gap-2.5 cursor-pointer group"
             title="Return to Welcome Screen"
           >
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-amber-500 flex items-center justify-center shadow-lg shadow-emerald-500/25 border border-white/20 group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-amber-500 flex items-center justify-center shadow-lg shadow-emerald-500/25 border border-white/20 group-hover:scale-105 transition-transform flex-shrink-0">
               <span className="font-bold text-sm text-stone-900 font-mono">P</span>
             </div>
             <div className="hidden sm:block">
@@ -66,10 +66,10 @@ export const Navbar = () => {
           <div className="relative">
             <button
               onClick={() => setShowProjectMenu((prev) => !prev)}
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl hover:bg-white/[0.06] text-xs font-semibold text-stone-200 transition-colors border border-transparent hover:border-emerald-500/30"
+              className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1.5 rounded-xl hover:bg-white/[0.06] text-xs font-semibold text-stone-200 transition-colors border border-transparent hover:border-emerald-500/30"
             >
-              <span className="truncate max-w-[140px] sm:max-w-[200px]">{activeProject.name}</span>
-              <ChevronDown className="w-3.5 h-3.5 text-stone-400" />
+              <span className="truncate max-w-[110px] sm:max-w-[200px]">{activeProject.name}</span>
+              <ChevronDown className="w-3.5 h-3.5 text-stone-400 flex-shrink-0" />
             </button>
 
             {showProjectMenu && (

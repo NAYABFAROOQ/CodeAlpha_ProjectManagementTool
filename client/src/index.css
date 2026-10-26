@@ -23,6 +23,12 @@ html:not(.dark) .aurora-mesh-bg {
     radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.08), transparent 50%) !important;
 }
 
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
 @layer base {
   body {
     background-color: #0a1a14;
@@ -36,9 +42,13 @@ html:not(.dark) .aurora-mesh-bg {
     background-size: cover;
     color: #f7fee7;
     min-height: 100vh;
+    width: 100% !important;
+    max-width: 100vw !important;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     overflow-y: auto;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
   }
 
   html:not(.dark) body {
@@ -132,12 +142,113 @@ html:not(.dark) .aurora-mesh-bg {
   }
 }
 
+/* Dynamic Gradient Flow for Project Branding */
+@keyframes gradientTextFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Project Name Fade Out on Launch (requested by user) */
+@keyframes fadeOutProjectTitle {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+  30% {
+    opacity: 0.9;
+    transform: scale(1.04) translateY(-6px);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.18) translateY(-32px);
+    filter: blur(14px);
+  }
+}
+
+/* Cinematic Swipe Out Transition to Workspace */
+@keyframes swipePageOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  40% {
+    opacity: 0.85;
+    transform: translateY(-20px) scale(0.98);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-90px) scale(0.92);
+    filter: blur(16px);
+  }
+}
+
+/* Workspace Sweep / Swipe In Transition */
+@keyframes swipeWorkspaceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(45px) scale(0.97);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 0.95;
+    transform: translateY(-4px) scale(1.005);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Floating animation */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 .animate-zoom-in {
   animation: zoomInHero 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .animate-title-zoom {
   animation: zoomInPulseTitle 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-gradient-text {
+  background-size: 200% auto !important;
+  animation: gradientTextFlow 5s ease infinite;
+}
+
+.animate-title-fadeout {
+  animation: fadeOutProjectTitle 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+.animate-swipe-out {
+  animation: swipePageOut 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+.animate-workspace-enter {
+  animation: swipeWorkspaceIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.animate-float-slow {
+  animation: floatSlow 3.5s ease-in-out infinite;
 }
 
 /* Light Mode Glassmorphism Adaptations */

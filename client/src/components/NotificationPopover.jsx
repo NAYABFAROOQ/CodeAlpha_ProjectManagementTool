@@ -14,7 +14,7 @@ export const NotificationPopover = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="absolute right-0 top-11 z-50 w-80 bg-stone-900/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-emerald-500/20 overflow-hidden text-stone-200"
+      className="absolute -right-8 sm:right-0 top-11 z-50 w-72 sm:w-80 max-w-[88vw] bg-stone-900/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-emerald-500/20 overflow-hidden text-stone-200"
       onClick={(e) => e.stopPropagation()}
     >
       <div className="flex items-center justify-between px-3.5 py-2.5 border-b border-emerald-500/20">

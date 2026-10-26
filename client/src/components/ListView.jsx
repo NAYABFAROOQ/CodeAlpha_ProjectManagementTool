@@ -25,9 +25,10 @@ export const ListView = () => {
   };
 
   return (
-    <div className="w-full px-6 pb-12">
+    <div className="w-full px-3 sm:px-6 pb-28 md:pb-12">
       <div className="glass-panel rounded-3xl overflow-hidden">
-        <table className="w-full text-left border-collapse">
+        <div className="overflow-x-auto -mx-0">
+          <table className="w-full min-w-[640px] text-left border-collapse">
           <thead>
             <tr className="border-b border-white/[0.08] text-[11px] uppercase font-bold text-stone-400 tracking-wider bg-white/[0.02]">
               <th className="py-3.5 px-5">Task Name</th>
@@ -119,6 +120,7 @@ export const ListView = () => {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

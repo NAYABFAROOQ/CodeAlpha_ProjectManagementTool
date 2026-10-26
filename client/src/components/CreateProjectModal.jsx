@@ -32,7 +32,7 @@ export const CreateProjectModal = () => {
       onClick={() => setIsCreateProjectOpen(false)}
     >
       <div
-        className="w-full max-w-md bg-stone-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-emerald-500/20 p-6 text-stone-100"
+        className="w-full max-w-md max-h-[92vh] overflow-y-auto bg-stone-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-emerald-500/20 p-4 sm:p-6 text-stone-100"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between pb-3.5 border-b border-white/10 mb-4">

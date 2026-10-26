@@ -44,7 +44,7 @@ export const CreateTaskModal = () => {
       onClick={() => setIsCreateTaskOpen(false)}
     >
       <div
-        className="w-full max-w-lg bg-stone-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-emerald-500/20 p-6 text-stone-100"
+        className="w-full max-w-lg max-h-[92vh] overflow-y-auto bg-stone-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-emerald-500/20 p-4 sm:p-6 text-stone-100"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between pb-3.5 border-b border-white/10 mb-4">
@@ -89,7 +89,7 @@ export const CreateTaskModal = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
             <div>
               <label className="text-[11px] font-bold uppercase text-stone-400 tracking-wider block mb-1.5">
                 Stage
@@ -124,7 +124,7 @@ export const CreateTaskModal = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
             <div>
               <label className="text-[11px] font-bold uppercase text-stone-400 tracking-wider block mb-1.5">
                 Assignee

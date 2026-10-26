@@ -215,8 +215,38 @@ export const InteractiveBackground3D = () => {
       spawnRipple(pos.x, pos.y);
     };
 
+    const handleTouchMove = (e) => {
+      if (!e.touches || e.touches.length === 0) return;
+      const touch = e.touches[0];
+      mouseX = (touch.clientX / window.innerWidth) * 2 - 1;
+      mouseY = -(touch.clientY / window.innerHeight) * 2 + 1;
+
+      targetCameraX = mouseX * 10;
+      targetCameraY = mouseY * 6;
+
+      emeraldLight.position.x = mouseX * 35;
+      emeraldLight.position.y = mouseY * 25;
+    };
+
+    const handleTouchStart = (e) => {
+      if (!e.touches || e.touches.length === 0) return;
+      const touch = e.touches[0];
+      const vector = new THREE.Vector3(
+        (touch.clientX / window.innerWidth) * 2 - 1,
+        -(touch.clientY / window.innerHeight) * 2 + 1,
+        0.5
+      );
+      vector.unproject(camera);
+      const dir = vector.sub(camera.position).normalize();
+      const distance = -camera.position.z / dir.z;
+      const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+      spawnRipple(pos.x, pos.y);
+    };
+
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('click', handleClick, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
 
     // Window Resize Handler
     const handleResize = () => {
@@ -289,6 +319,8 @@ export const InteractiveBackground3D = () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleClick);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('resize', handleResize);
 
       if (container && renderer.domElement) {

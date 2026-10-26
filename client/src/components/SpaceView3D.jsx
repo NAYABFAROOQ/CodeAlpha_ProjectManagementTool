@@ -86,7 +86,7 @@ export const SpaceView3D = () => {
     return () => clearInterval(interval);
   }, [isAutoRotate]);
 
-  // Drag to rotate 3D Space
+  // Drag & Touch to rotate 3D Space
   const handleMouseDown = (e) => {
     if (e.button !== 0) return;
     setIsDragging(true);
@@ -107,6 +107,26 @@ export const SpaceView3D = () => {
     setIsDragging(false);
   };
 
+  const handleTouchStart = (e) => {
+    if (!e.touches || e.touches.length === 0) return;
+    setIsDragging(true);
+    setDragStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || !e.touches || e.touches.length === 0) return;
+    const dx = e.touches[0].clientX - dragStart.x;
+    const dy = e.touches[0].clientY - dragStart.y;
+
+    setRotY((prev) => prev + dx * 0.5);
+    setRotX((prev) => Math.max(-45, Math.min(65, prev - dy * 0.4)));
+    setDragStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   const handleWheel = (e) => {
     e.preventDefault();
     const delta = e.deltaY * -0.001;
@@ -120,7 +140,7 @@ export const SpaceView3D = () => {
   };
 
   return (
-    <div className="w-full px-6 pb-12 flex flex-col select-none">
+    <div className="w-full px-3 sm:px-6 pb-12 flex flex-col select-none">
       {/* 3D Control Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4 p-3 rounded-2xl glass-panel">
         <div className="flex items-center gap-2">
@@ -132,7 +152,7 @@ export const SpaceView3D = () => {
               3D Spatial Workspace
             </h2>
             <p className="text-[10px] text-stone-400">
-              Interactive 3D Stage • Drag to orbit • Scroll to zoom
+              Interactive 3D Stage • Drag / Touch to orbit • Zoom controls
             </p>
           </div>
         </div>
@@ -148,7 +168,7 @@ export const SpaceView3D = () => {
             }`}
           >
             {isAutoRotate ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            <span>{isAutoRotate ? 'Orbiting' : 'Auto Orbit'}</span>
+            <span className="hidden sm:inline">{isAutoRotate ? 'Orbiting' : 'Auto Orbit'}</span>
           </button>
 
           {/* Zoom Buttons */}
@@ -179,15 +199,18 @@ export const SpaceView3D = () => {
         </div>
       </div>
 
-      {/* 3D Stage Viewport */}
+      {/* 3D Stage Viewport (Touch & Drag enabled) */}
       <div
         ref={containerRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         onWheel={handleWheel}
-        className="relative w-full h-[620px] rounded-3xl overflow-hidden glass-panel border border-emerald-500/20 cursor-grab active:cursor-grabbing flex items-center justify-center"
+        className="relative w-full h-[480px] sm:h-[620px] rounded-3xl overflow-hidden glass-panel border border-emerald-500/20 cursor-grab active:cursor-grabbing flex items-center justify-center touch-none"
         style={{
           perspective: '1300px',
           background: 'radial-gradient(ellipse at center, rgba(18, 42, 33, 0.4) 0%, rgba(10, 26, 20, 0.8) 100%)',

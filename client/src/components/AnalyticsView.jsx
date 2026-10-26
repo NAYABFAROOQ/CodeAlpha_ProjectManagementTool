@@ -17,43 +17,43 @@ export const AnalyticsView = () => {
   const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
   return (
-    <div className="w-full px-6 pb-12 space-y-6">
+    <div className="w-full px-3 sm:px-6 pb-28 md:pb-12 space-y-4 sm:space-y-6">
       {/* 3D Glass KPI Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 kanban-column-perspective">
-        <div className="glass-card task-card-3d rounded-3xl p-5">
-          <div className="flex items-center justify-between text-stone-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400">Total Tasks</span>
-            <Layers className="w-4 h-4 text-emerald-400" />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 kanban-column-perspective">
+        <div className="glass-card task-card-3d rounded-3xl p-3.5 sm:p-5">
+          <div className="flex items-center justify-between text-stone-400 mb-1.5 sm:mb-2">
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-400">Total Tasks</span>
+            <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
           </div>
-          <div className="text-3xl font-extrabold text-white tracking-tight">{totalTasks}</div>
-          <div className="text-[11px] text-stone-400 mt-1">Project scope items</div>
+          <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">{totalTasks}</div>
+          <div className="text-[10px] sm:text-[11px] text-stone-400 mt-0.5 sm:mt-1">Project scope items</div>
         </div>
 
-        <div className="glass-card task-card-3d rounded-3xl p-5">
-          <div className="flex items-center justify-between text-stone-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400">Completion</span>
-            <TrendingUp className="w-4 h-4 text-emerald-400" />
+        <div className="glass-card task-card-3d rounded-3xl p-3.5 sm:p-5">
+          <div className="flex items-center justify-between text-stone-400 mb-1.5 sm:mb-2">
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-400">Completion</span>
+            <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
           </div>
-          <div className="text-3xl font-extrabold text-emerald-400 tracking-tight">{completionRate}%</div>
-          <div className="text-[11px] text-stone-400 mt-1">{completedTasks} tasks resolved</div>
+          <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight">{completionRate}%</div>
+          <div className="text-[10px] sm:text-[11px] text-stone-400 mt-0.5 sm:mt-1">{completedTasks} tasks resolved</div>
         </div>
 
-        <div className="glass-card task-card-3d rounded-3xl p-5">
-          <div className="flex items-center justify-between text-stone-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">In Progress</span>
-            <Clock className="w-4 h-4 text-amber-400" />
+        <div className="glass-card task-card-3d rounded-3xl p-3.5 sm:p-5">
+          <div className="flex items-center justify-between text-stone-400 mb-1.5 sm:mb-2">
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-amber-400">In Progress</span>
+            <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
           </div>
-          <div className="text-3xl font-extrabold text-amber-400 tracking-tight">{inProgressTasks}</div>
-          <div className="text-[11px] text-stone-400 mt-1">Actively moving forward</div>
+          <div className="text-2xl sm:text-3xl font-extrabold text-amber-400 tracking-tight">{inProgressTasks}</div>
+          <div className="text-[10px] sm:text-[11px] text-stone-400 mt-0.5 sm:mt-1">Actively moving forward</div>
         </div>
 
-        <div className="glass-card task-card-3d rounded-3xl p-5">
-          <div className="flex items-center justify-between text-stone-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-rose-400">Attention Needed</span>
-            <AlertTriangle className="w-4 h-4 text-rose-400" />
+        <div className="glass-card task-card-3d rounded-3xl p-3.5 sm:p-5">
+          <div className="flex items-center justify-between text-stone-400 mb-1.5 sm:mb-2">
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-rose-400">Attention</span>
+            <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-400" />
           </div>
-          <div className="text-3xl font-extrabold text-rose-400 tracking-tight">{overdueTasks}</div>
-          <div className="text-[11px] text-stone-400 mt-1">Overdue items</div>
+          <div className="text-2xl sm:text-3xl font-extrabold text-rose-400 tracking-tight">{overdueTasks}</div>
+          <div className="text-[10px] sm:text-[11px] text-stone-400 mt-0.5 sm:mt-1">Overdue items</div>
         </div>
       </div>
 

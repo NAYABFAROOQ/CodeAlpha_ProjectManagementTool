@@ -70,8 +70,22 @@ The backend starts on **http://localhost:5001**.
 
 ---
 
+## 🛡️ Integrated Module: ExportReady FYP Compliance SaaS
+In addition to the **PlanPulse Agile Project Management Suite**, this repository also contains **ExportReady** — a production-grade regulatory compliance and export-readiness SaaS prototype designed for surgical instrument manufacturers (FDA 76-01 / 21 CFR Part 820 QMSR):
+- **Cryptographic Evidence Ledger:** Tamper-evident SHA-256 integrity verification.
+- **Monte Carlo Regulatory Schedule Engine:** 1,000-run simulation estimating probability of on-time FDA clearance.
+- **Mock FDA 483 Audit Simulator:** Real-time audit scoring and CAPA generation.
+- **Knapsack Remediation Optimization:** Dynamic programming algorithm maximizing retained export revenue within time budgets.
+- **FDA Gatekeeper & Formal Defense Dossier:** Digital signatures and printable audit packets.
+
+Switch between **Pulse PM** and **ExportReady** instantly with the in-app mode switcher.
+
+---
+
 ## 🏆 CodeAlpha Internship Submission
 - **Intern Name:** Nayab Farooq
 - **Domain:** Full Stack Web Development
-- **Task:** Task 3 — Project Management Tool
+- **Task:** Task 3 — Project Management Tool (PlanPulse)
 - **Organization:** CodeAlpha
+- **GitHub Repository:** [NAYABFAROOQ/CodeAlpha_ProjectManagementTool](https://github.com/NAYABFAROOQ/CodeAlpha_ProjectManagementTool)
+

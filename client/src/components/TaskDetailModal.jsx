@@ -93,14 +93,14 @@ export const TaskDetailModal = () => {
       onClick={() => setSelectedTask(null)}
     >
       <div
-        className="w-full max-w-2xl max-h-[88vh] bg-stone-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-emerald-500/20 flex flex-col overflow-hidden text-stone-100"
+        className="w-full max-w-2xl max-h-[92vh] bg-stone-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-emerald-500/20 flex flex-col overflow-hidden text-stone-100"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-500/20">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-emerald-500/20">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <span
-              className={`text-xs font-semibold px-2.5 py-0.5 rounded-lg border ${priority.badge}`}
+              className={`text-xs font-semibold px-2 sm:px-2.5 py-0.5 rounded-lg border ${priority.badge}`}
             >
               {priority.label}
             </span>
@@ -108,7 +108,7 @@ export const TaskDetailModal = () => {
             <select
               value={selectedTask.columnId}
               onChange={(e) => moveTask(selectedTask.id, e.target.value)}
-              className="text-xs font-semibold px-2.5 py-1 rounded-xl bg-stone-800/80 border border-emerald-500/30 text-stone-200 focus:border-emerald-500 outline-none cursor-pointer"
+              className="text-xs font-semibold px-2 sm:px-2.5 py-1 rounded-xl bg-stone-800/80 border border-emerald-500/30 text-stone-200 focus:border-emerald-500 outline-none cursor-pointer max-w-[130px] sm:max-w-none"
             >
               {columns.map((col) => (
                 <option key={col.id} value={col.id} className="bg-stone-900 text-stone-200">
@@ -118,7 +118,7 @@ export const TaskDetailModal = () => {
             </select>
           </div>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1 sm:gap-1.5">
             <button
               onClick={() => deleteTask(selectedTask.id)}
               className="p-1.5 rounded-xl text-stone-400 hover:text-rose-400 hover:bg-rose-500/20 transition-colors"
@@ -136,14 +136,14 @@ export const TaskDetailModal = () => {
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-5">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-5">
           {/* Title */}
           <div>
             <input
               type="text"
               value={selectedTask.title}
               onChange={(e) => updateTask({ ...selectedTask, title: e.target.value })}
-              className="w-full text-lg font-bold bg-transparent border-none text-white focus:outline-none focus:ring-0 px-0 placeholder-stone-500"
+              className="w-full text-base sm:text-lg font-bold bg-transparent border-none text-white focus:outline-none focus:ring-0 px-0 placeholder-stone-500"
               placeholder="Task title..."
             />
           </div>
@@ -163,7 +163,7 @@ export const TaskDetailModal = () => {
           </div>
 
           {/* Properties Grid */}
-          <div className="grid grid-cols-2 gap-4 p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
             <div>
               <span className="text-[11px] text-stone-400 font-medium block mb-1">Priority</span>
               <select
@@ -228,7 +228,7 @@ export const TaskDetailModal = () => {
                   </label>
                   <button
                     onClick={() => handleDeleteSubtask(item.id)}
-                    className="opacity-0 group-hover:opacity-100 p-1 text-stone-400 hover:text-rose-400 transition-opacity"
+                    className="opacity-80 sm:opacity-0 group-hover:opacity-100 p-1.5 sm:p-1 text-stone-400 hover:text-rose-400 transition-opacity"
                   >
                     <Trash2 className="w-3 h-3" />
                   </button>

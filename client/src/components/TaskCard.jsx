@@ -87,7 +87,7 @@ export const TaskCard = ({ task }) => {
                   e.stopPropagation();
                   setIsFlipped(!isFlipped);
                 }}
-                className="p-1 rounded-md text-stone-400 hover:text-emerald-400 hover:bg-white/10 transition-colors opacity-0 group-hover:opacity-100"
+                className="p-1.5 sm:p-1 rounded-md text-stone-300 sm:text-stone-400 hover:text-emerald-400 hover:bg-white/10 transition-colors opacity-80 sm:opacity-0 group-hover:opacity-100 active:scale-95"
                 title="3D Flip Preview"
               >
                 <Rotate3d className="w-3.5 h-3.5" />
@@ -97,7 +97,7 @@ export const TaskCard = ({ task }) => {
               <div className="relative">
                 <button
                   onClick={() => setShowQuickMenu((prev) => !prev)}
-                  className="p-1 rounded-md text-stone-400 hover:text-white hover:bg-white/10 transition-colors opacity-0 group-hover:opacity-100"
+                  className="p-1.5 sm:p-1 rounded-md text-stone-300 sm:text-stone-400 hover:text-white hover:bg-white/10 transition-colors opacity-80 sm:opacity-0 group-hover:opacity-100 active:scale-95"
                   title="Task options"
                 >
                   <MoreHorizontal className="w-3.5 h-3.5" />

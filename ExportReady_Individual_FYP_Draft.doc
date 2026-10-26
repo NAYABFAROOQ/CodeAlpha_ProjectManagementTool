@@ -1,0 +1,282 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>ExportReady - Individual FYP Draft Specification</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page {
+    size: 8.5in 11.0in;
+    margin: 1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin: .5in;
+    mso-footer-margin: .5in;
+    mso-paper-source: 0;
+}
+body {
+    font-family: 'Calibri', 'Arial', sans-serif;
+    font-size: 11pt;
+    line-height: 1.4;
+    color: #1e293b;
+}
+h1 {
+    font-size: 22pt;
+    color: #065f46;
+    font-weight: bold;
+    border-bottom: 2pt solid #065f46;
+    padding-bottom: 6pt;
+    margin-top: 18pt;
+    margin-bottom: 8pt;
+}
+h2 {
+    font-size: 15pt;
+    color: #047857;
+    font-weight: bold;
+    border-bottom: 1pt solid #cbd5e1;
+    padding-bottom: 4pt;
+    margin-top: 16pt;
+    margin-bottom: 6pt;
+}
+h3 {
+    font-size: 12pt;
+    color: #0f172a;
+    font-weight: bold;
+    margin-top: 12pt;
+    margin-bottom: 4pt;
+}
+p {
+    margin-bottom: 6pt;
+    text-align: justify;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8pt;
+    margin-bottom: 12pt;
+}
+th, td {
+    border: 1pt solid #cbd5e1;
+    padding: 6pt 8pt;
+    font-size: 10pt;
+}
+th {
+    background-color: #f1f5f9;
+    font-weight: bold;
+    color: #0f172a;
+}
+.callout {
+    background-color: #f0fdf4;
+    border-left: 4pt solid #10b981;
+    padding: 8pt 12pt;
+    margin: 10pt 0;
+}
+code, pre {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 9.5pt;
+    background-color: #f8fafc;
+}
+pre {
+    padding: 8pt;
+    border: 1pt solid #e2e8f0;
+}
+.title-page {
+    text-align: center;
+    padding-top: 100pt;
+    page-break-after: always;
+}
+.title-page h1 {
+    font-size: 26pt;
+    color: #065f46;
+    border: none;
+    margin-bottom: 12pt;
+}
+.title-page .subtitle {
+    font-size: 14pt;
+    color: #475569;
+    margin-bottom: 40pt;
+}
+.meta-box {
+    margin-top: 60pt;
+    font-size: 11pt;
+    color: #334155;
+    line-height: 1.8;
+}
+</style>
+</head>
+<body>
+
+<div class="title-page">
+    <h1>ExportReady</h1>
+    <div class="subtitle">An Export-Readiness Compliance Decision-Support SaaS for Sialkot Surgical Instrument Exporters</div>
+    <div style="font-size: 13pt; font-weight: bold; color: #047857; margin-bottom: 20pt;">FINAL YEAR PROJECT (FYP) INDIVIDUAL SYSTEM SPECIFICATION & PRD</div>
+    
+    <div class="meta-box">
+        <strong>Author / Candidate:</strong> Individual BS Computer Science Candidate<br>
+        <strong>Academic Supervisor:</strong> Senior Product Architect & FYP Review Committee<br>
+        <strong>Target Regulations:</strong> US FDA Import Alert 76-01, 21 CFR Part 820 QMSR, ISO 13485:2016, ASTM F899, ASTM A967<br>
+        <strong>Academic Year:</strong> 2026 – 2027<br>
+        <strong>Document Status:</strong> Finalized Individual Architectural Draft
+    </div>
+</div>
+
+<h1>1. Executive Summary</h1>
+<p>
+Sialkot, Pakistan accounts for over 70% of global hand-held surgical instrument manufacturing. Despite exquisite craftsmanship, Pakistani exporters face catastrophic port detentions under US FDA Import Alert 76-01 ("Detention Without Physical Examination of Surgical Instruments from Specified Pakistani Manufacturers").
+</p>
+<p>
+The core operational failure is information asymmetry and post-manufacturing discovery. Factories accept overseas buyer Purchase Orders (POs) without pre-verifying if their technical quality evidence satisfies US statutory requirements under 21 CFR Part 820 (QMSR) and ASTM metallurgical standards (ASTM F899 for stainless steel chemistry, ASTM A967 for passivation bath validation). Non-compliances are only discovered when goods arrive at US customs or during foreign factory inspections.
+</p>
+<div class="callout">
+<strong>ExportReady Solution:</strong> A multi-tenant compliance decision-support SaaS that transforms passive compliance paper into a cryptographically verified, stochastically scheduled, and regulation-enforced export pipeline.
+</div>
+
+<h1>2. Individual Architectural Critique vs. Peer Draft</h1>
+<p>
+While my peer's initial 16-feature draft provided a basic CRUD foundation, my individual draft expands the system to 20 specialized features introducing critical academic and operational innovations:
+</p>
+
+<table>
+    <tr>
+        <th>Dimension</th>
+        <th>Peer Initial Draft (16 Features)</th>
+        <th>My Individual Refined Draft (20 Features)</th>
+        <th>Academic & Practical Justification</th>
+    </tr>
+    <tr>
+        <td><strong>Data Integrity</strong></td>
+        <td>Basic file upload to database.</td>
+        <td><strong>Cryptographic Tamper-Evident Ledger (SHA-256 Backward Chaining & Backdating Detection)</strong></td>
+        <td>FDA 76-01 was imposed due to altered, forged, or backdated test reports. A backward-chained hash log mathematically guarantees record immutability.</td>
+    </tr>
+    <tr>
+        <td><strong>Schedule Feasibility</strong></td>
+        <td>Deterministic summation (Sum of lead times vs. deadline).</td>
+        <td><strong>10,000-Iteration Monte Carlo Lead Time Simulator (PERT Distribution + Tornado Chart)</strong></td>
+        <td>Testing labs in Pakistan face high backlog volatility. Stochastic PERT modeling computes realistic on-time probability P(on-time), P50, and P90 dates.</td>
+    </tr>
+    <tr>
+        <td><strong>Regulatory Audit</strong></td>
+        <td>Generic RAG conversational assistant.</td>
+        <td><strong>Mock FDA QMSR 483 Inspection Simulator</strong></td>
+        <td>Pre-empts formal FDA Form 483 inspection observations by correlating 32 checklist items across 8 pillars against Evidence Vault data.</td>
+    </tr>
+    <tr>
+        <td><strong>Customs Clearance</strong></td>
+        <td>Factory-side checks only.</td>
+        <td><strong>Bilateral Importer / Buyer Vetting (Buyer-Side Blocker)</strong></td>
+        <td>Detentions frequently happen because the US Importer or US Agent is deregistered, regardless of factory manufacturing compliance.</td>
+    </tr>
+    <tr>
+        <td><strong>Economic Feasibility</strong></td>
+        <td>None.</td>
+        <td><strong>Compliance Cost & Quotation Estimator (in PKR)</strong></td>
+        <td>Factory owners must calculate whether remediation lab testing fees will wipe out their gross export margin before accepting a PO.</td>
+    </tr>
+</table>
+
+<h1>3. End-to-End System Workflow (6-Stage Pipeline)</h1>
+<p>
+ExportReady implements a strict, 6-stage operational pipeline:
+</p>
+<pre>
+STAGE 1: TENANT SETUP & CRYPTOGRAPHIC EVIDENCE LEDGER
+  - Register Sialkot Factory Profile (SCCI Reg, FDA FEI, Green List Status)
+  - Ingest Quality Evidence into Vault (Steel MTC, Passivation, DHR, Calibration, ISO 13485)
+  - Compute SHA-256 File Hash -> Link to prev_hash -> Flag backdating if upload date diverges > 30 days
+
+STAGE 2: BUYER PO INTAKE & SEMANTIC NLP EXTRACTION
+  - Ingest Buyer PO Metadata (Instrument Code, Class I Reusable, 5,000 pcs, $48,500 USD, Nov 20 Deadline)
+  - Tokenize & Embed Quality Clauses using MiniLM-L6-v2 Embeddings
+  - Cosine Similarity Matching against 25 Codified FDA/ASTM Rules -> Human Confirmation
+
+STAGE 3: BILATERAL DECISION ENGINE
+  - Factory-Side Evaluation: Cross-reference rules with Evidence Vault Proof Grades (MET, GAP, BLOCKER)
+  - Buyer-Side Vetting: Verify Buyer FEI & US Agent -> Flag BUYER-SIDE BLOCKER if inactive
+
+STAGE 4: STOCHASTIC RISK SIMULATION & KNAPSACK OPTIMIZATION
+  - Execute 10,000-run Monte Carlo Simulation with PERT Gap Distributions
+  - Output P(on-time) [64.2%], P50 [Nov 14], P90 [Nov 26] & Tornado Sensitivity Ranking
+  - Run 0/1 Knapsack Optimizer to maximize unlocked order revenue under lead time budget
+  - Calculate Compliance Testing Cost in PKR vs Export Profit Margin
+
+STAGE 5: GAP REMEDIATION & MOCK FDA QMSR INSPECTION
+  - Convert GAPs to Kanban Task Cards with CPM Back-Calculated Deadlines
+  - Execute Mock FDA QMSR Inspection Wizard (32 Questions across 8 Pillars)
+  - Compute Readiness Score (58/100) & Generate Simulated Form 483 Warning Observations
+
+STAGE 6: EXPORT GATEKEEPING & AUDIT RELEASE
+  - Gatekeeper verifies all critical items reach Document-Backed grade
+  - Unlock Commercial Invoice & Packing List Generation
+  - Generate Cryptographically Signed Audit PDF with SHA-256 Ledger Stamp
+</pre>
+
+<h1>4. Mathematical Formulations</h1>
+<h3>4.1 Cryptographic Ledger Chaining & Backdating Detection</h3>
+<p>For document <em>i</em> uploaded at sequence <em>k</em> within tenant <em>T</em>:</p>
+<pre>
+Payload_k = SHA256(File_k) || DocType_k || ClaimedDate_k || UploadTimestamp_UTC
+H_k = SHA256(H_{k-1} || Payload_k)   where H_0 = SHA256("GENESIS_BLOCK_" || TenantID)
+
+Backdating Heuristic:
+Delta_Days = |UploadDate - ClaimedDate|
+If Delta_Days > 30 days => Status = TAMPER_SUSPECT_BACKDATED => Downgrade to SELF_DECLARED
+</pre>
+
+<h3>4.2 Monte Carlo Lead Time Risk Simulation (PERT Distribution)</h3>
+<p>For each compliance gap <em>g</em> with minimum <em>a<sub>g</sub></em>, most likely <em>m<sub>g</sub></em>, and maximum <em>b<sub>g</sub></em>:</p>
+<pre>
+Mean: mu_g = (a_g + 4*m_g + b_g) / 6
+Standard Deviation: sigma_g = (b_g - a_g) / 6
+Beta Parameters: alpha_g = 1 + 4*((m_g - a_g)/(b_g - a_g)),  beta_g = 1 + 4*((b_g - m_g)/(b_g - a_g))
+Sample Draw: X_g ~ a_g + (b_g - a_g) * Beta(alpha_g, beta_g)
+
+Across 10,000 iterations:
+Total_Duration^(j) = SUM(X_g^(j))
+P(on-time) = (1 / 10000) * SUM( [Total_Duration^(j) <= (Deadline - IntakeDate)] )
+</pre>
+
+<h1>5. Sprint Implementation Roadmap (3 Weeks)</h1>
+<table>
+    <tr>
+        <th>Sprint</th>
+        <th>Deliverables Shipped</th>
+        <th>Files Touched</th>
+        <th>Scope Defended</th>
+    </tr>
+    <tr>
+        <td><strong>Week 1</strong></td>
+        <td>Cryptographic Evidence Ledger (SHA-256 chaining), Backdating heuristic alert banner, Seed data (1 factory, 6 orders, 20 evidence files with 1 tampered fixture).</td>
+        <td><code>evidence_ledger</code>, <code>ledgerService.js</code>, <code>VaultLedger.jsx</code></td>
+        <td>Data immutability & fraud prevention.</td>
+    </tr>
+    <tr>
+        <td><strong>Week 2</strong></td>
+        <td>10,000-run Monte Carlo Lead Time Simulator, Sensitivity Tornado bar chart (Pearson r), 0/1 Knapsack optimizer with revenue slider, PKR Compliance Cost Estimator.</td>
+        <td><code>monteCarloEngine.js</code>, <code>RiskSimulator.jsx</code>, <code>KnapsackPlanner.jsx</code></td>
+        <td>Stochastic operational research & economics.</td>
+    </tr>
+    <tr>
+        <td><strong>Week 3</strong></td>
+        <td>Mock FDA QMSR Inspection Simulator (32 questions across 8 pillars), Automated simulated FDA Form 483 generator, Export Gatekeeper commercial invoice release lock, Traceable Audit Certificate.</td>
+        <td><code>mock_audit_sessions</code>, <code>MockAuditWizard.jsx</code>, <code>GatekeeperModal.jsx</code></td>
+        <td>Regulatory compliance clearance & verification.</td>
+    </tr>
+</table>
+
+<h1>6. Live 5-Minute Demo Script</h1>
+<ul>
+    <li><strong>0:00 - 1:00:</strong> Introduce Sialkot's export challenge under FDA 76-01. Open Order PO-8821 for 5,000 Mayo Dissecting Scissors ($48,500 USD). Run compliance evaluation -> Status: GAP DETECTED.</li>
+    <li><strong>1:00 - 2:00:</strong> Open Evidence Vault & Ledger. Demonstrate 42-block cryptographic chain. Inspect flagged Mill Test Certificate with a 284-day backdating discrepancy -> Downgraded to SELF_DECLARED.</li>
+    <li><strong>2:00 - 3:15:</strong> Run 10,000 Monte Carlo iterations. Show that deterministic 11 days is misleading: real P(on-time) is only 64.2% with a P90 delivery of Nov 26. Tornado chart proves ASTM A967 Passivation Lab backlog drives 82% of schedule variance.</li>
+    <li><strong>3:15 - 4:15:</strong> Switch to Mock FDA QMSR Inspection Simulator. Answer 32 questions -> Score: 58/100 (HIGH RISK). Simulator generates a simulated FDA Form 483 observation citing 21 CFR 820.75 for unvalidated passivation baths.</li>
+    <li><strong>4:15 - 5:00:</strong> Fast-track testing via expedited lab option -> P(on-time) surges to 94.2%. Export Gatekeeper unlocks commercial invoice and generates Traceable Audit PDF with cryptographic hash stamp.</li>
+</ul>
+
+</body>
+</html>
